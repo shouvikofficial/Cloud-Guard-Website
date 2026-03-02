@@ -51,16 +51,23 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   const email = document.getElementById('loginEmail').value.trim();
   const password = document.getElementById('loginPassword').value;
 
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  try {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
 
-  label.style.display = '';
-  spinner.style.display = 'none';
+    label.style.display = '';
+    spinner.style.display = 'none';
 
-  if (error) {
-    errorEl.textContent = error.message;
-  } else {
-    toast('Signed in successfully');
-    showDashboard();
+    if (error) {
+        errorEl.textContent = error.message;
+    } else {
+      toast('Signed in successfully');
+      showDashboard();
+    }
+  } catch (err) {
+    label.style.display = '';
+    spinner.style.display = 'none';
+    errorEl.textContent = 'Connection failed. Check Supabase configuration.';
+    console.error('Login error:', err);
   }
 });
 
@@ -639,4 +646,10 @@ function escapeAttr(str) {
 }
 
 // ─── Init ───────────────────────────────────────────
-checkSession();
+// Warn if Supabase is not configured (env vars missing)
+if (SUPABASE_URL.includes('__') || SUPABASE_ANON_KEY.includes('__')) {
+  document.getElementById('loginError').textContent = 'Supabase not configured. Set SUPABASE_URL and SUPABASE_ANON_KEY in Vercel environment variables and redeploy.';
+  document.getElementById('loginBtn').disabled = true;
+} else {
+  checkSession();
+}
