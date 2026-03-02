@@ -85,7 +85,7 @@
 }
 
 [data-theme="light"] .nav-links a:hover {
-  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
 }
 
 [data-theme="light"] .nav-toggle span {
@@ -113,7 +113,7 @@
   color: var(--text-secondary);
 }
 
-[data-theme="light"] .nav-links {
+[data-theme="light"] .nav-links.active {
   background: rgba(255, 255, 255, 0.95);
 }
 
@@ -529,56 +529,74 @@ ul {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 100px;
 }
 
 .nav-links a {
-  padding: 8px 16px;
-  font-size: 0.9rem;
+  padding: 8px 18px;
+  font-size: 0.85rem;
   font-weight: 500;
-  color: var(--text-secondary);
-  border-radius: var(--radius-sm);
-  transition: all var(--transition-fast);
+  color: var(--text-muted);
+  border-radius: 100px;
+  transition: all 0.3s var(--ease-out);
+  position: relative;
+  letter-spacing: 0.01em;
 }
 
 .nav-links a:hover {
   color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.05);
 }
 
+/* Active pill indicator */
 .nav-links a.active {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.07);
-  position: relative;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+  box-shadow: 0 2px 12px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 16px;
-  height: 2px;
-  border-radius: 2px;
-  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-mid));
+  display: none;
+}
+
+[data-theme="light"] .nav-links {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="light"] .nav-links a.active {
-  background: rgba(0, 0, 0, 0.06);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
+/* Download CTA — separated outside pill */
 .nav-cta {
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
-  color: #fff !important;
+  background: transparent !important;
+  color: var(--accent-light) !important;
   font-weight: 600 !important;
   padding: 8px 20px !important;
-  border-radius: var(--radius-sm) !important;
+  border-radius: 100px !important;
+  border: 1px solid rgba(99, 102, 241, 0.4) !important;
+  box-shadow: none !important;
+  transition: all 0.3s var(--ease-out) !important;
 }
 
 .nav-cta:hover {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+  color: #fff !important;
+  border-color: transparent !important;
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px var(--accent-glow);
+  box-shadow: 0 4px 20px var(--accent-glow) !important;
+}
+
+.nav-links a.active.nav-cta {
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+  border-color: transparent !important;
+  color: #fff !important;
+  box-shadow: 0 2px 12px var(--accent-glow) !important;
 }
 
 /* Theme Toggle */
@@ -1632,14 +1650,37 @@ ul {
     right: 0;
     background: rgba(9, 9, 11, 0.95);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 24px;
+    padding: 20px;
     border-bottom: 1px solid var(--border-color);
-    gap: 8px;
+    border-radius: 0;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+  }
+
+  .nav-links a.active {
+    border-radius: var(--radius-md);
+  }
+
+  .nav-cta {
+    margin-top: 8px;
+    text-align: center;
+    justify-content: center;
   }
 
   .nav-links.active {
     display: flex;
+  }
+
+  [data-theme="light"] .nav-links {
+    background: rgba(255, 255, 255, 0.95);
   }
 
   .nav-toggle {
