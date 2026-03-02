@@ -572,31 +572,26 @@ ul {
   box-shadow: 0 2px 12px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
-/* Download CTA — separated outside pill */
+/* Download CTA — always highlighted */
 .nav-cta {
-  background: transparent !important;
-  color: var(--accent-light) !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+  color: #fff !important;
   font-weight: 600 !important;
-  padding: 8px 20px !important;
+  padding: 8px 22px !important;
   border-radius: 100px !important;
-  border: 1px solid rgba(99, 102, 241, 0.4) !important;
-  box-shadow: none !important;
+  border: none !important;
+  box-shadow: 0 2px 16px var(--accent-glow) !important;
   transition: all 0.3s var(--ease-out) !important;
 }
 
 .nav-cta:hover {
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
-  color: #fff !important;
-  border-color: transparent !important;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px var(--accent-glow) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 28px var(--accent-glow), 0 0 0 1px rgba(99, 102, 241, 0.3) !important;
+  filter: brightness(1.1);
 }
 
 .nav-links a.active.nav-cta {
-  background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
-  border-color: transparent !important;
-  color: #fff !important;
-  box-shadow: 0 2px 12px var(--accent-glow) !important;
+  box-shadow: 0 4px 24px var(--accent-glow) !important;
 }
 
 /* Theme Toggle */
@@ -1709,20 +1704,19 @@ ul {
     box-shadow: 0 2px 12px var(--accent-glow);
   }
 
-  /* CTA in mobile dropdown */
+  /* CTA in mobile dropdown — always highlighted */
   .nav-cta {
     margin-top: 8px;
     text-align: center;
     justify-content: center;
-    border: 1px solid rgba(99, 102, 241, 0.4) !important;
-    background: transparent !important;
-    color: var(--accent-light) !important;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
+    border: none !important;
+    color: #fff !important;
+    box-shadow: 0 2px 16px var(--accent-glow) !important;
   }
 
   .nav-links a.active.nav-cta {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark)) !important;
-    border-color: transparent !important;
-    color: #fff !important;
+    box-shadow: 0 4px 24px var(--accent-glow) !important;
   }
 
   .nav-toggle {
