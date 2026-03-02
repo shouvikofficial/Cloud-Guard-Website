@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   initSmoothScroll();
   initScrollToTop();
+  initCursorFollower();
+  initTiltCards();
 });
 
 /* ---------- THEME TOGGLE ---------- */
@@ -194,22 +196,71 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
-/* ---------- MOUSE GLOW on FEATURE CARDS ---------- */
-document.querySelectorAll('.feature-card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+/* ---------- 3D TILT EFFECT on FEATURE CARDS ---------- */
+function initTiltCards() {
+  const cards = document.querySelectorAll('.feature-card');
+  if (window.matchMedia('(pointer: coarse)').matches) return; // skip on touch
 
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-    card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.04), var(--bg-card-hover) 40%)`;
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = ((y - centerY) / centerY) * -6;
+      const rotateY = ((x - centerX) / centerX) * 6;
+
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      card.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.06), transparent 40%)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.background = '';
+    });
+  });
+}
+
+/* ---------- CURSOR FOLLOWER (desktop) ---------- */
+function initCursorFollower() {
+  const cursor = document.getElementById('cursorFollower');
+  if (!cursor || window.matchMedia('(pointer: coarse)').matches) return;
+
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!cursor.classList.contains('visible')) {
+      cursor.classList.add('visible');
+    }
   });
 
-  card.addEventListener('mouseleave', () => {
-    card.style.background = '';
+  document.addEventListener('mouseleave', () => {
+    cursor.classList.remove('visible');
   });
-});
+
+  // Hover detection for interactive elements
+  const hoverTargets = 'a, button, .feature-card, .download-btn, .testimonial-card, .dev-socials a';
+  document.querySelectorAll(hoverTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+  });
+
+  // Smooth lag animation
+  function animate() {
+    const speed = 0.15;
+    cursorX += (mouseX - cursorX) * speed;
+    cursorY += (mouseY - cursorY) * speed;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
 
 /* ---------- PRELOADER ---------- */
 function initPreloader() {

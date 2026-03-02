@@ -82,6 +82,12 @@
   </script>
 </head>
 <body>
+  <!-- Noise texture overlay -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <!-- Cursor follower (desktop) -->
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
   <!-- Preloader -->
   <div class="preloader" id="preloader">
     <div class="preloader-spinner">
@@ -132,6 +138,9 @@
   <!-- ========== HERO ========== -->
   <section class="hero" id="hero" aria-label="Hero">
     <div class="hero-bg-glow"></div>
+    <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
     <div class="container hero-container">
       <div class="hero-content" data-animate="fade-up">
         <div class="hero-badge">
@@ -298,6 +307,53 @@
     </div>
   </section>
 
+  <!-- ========== TECH STACK MARQUEE ========== -->
+  <div class="tech-marquee" aria-label="Technology stack">
+    <div class="marquee-track">
+      <span class="marquee-item">Flutter</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Dart</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">FastAPI</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Python</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Supabase</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Telegram MTProto</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">AES-256-GCM</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Google Auth</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Material Design</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">REST API</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="marquee-item">Flutter</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Dart</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">FastAPI</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Python</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Supabase</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Telegram MTProto</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">AES-256-GCM</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Google Auth</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">Material Design</span>
+      <span class="marquee-separator">&#x2022;</span>
+      <span class="marquee-item">REST API</span>
+      <span class="marquee-separator">&#x2022;</span>
+    </div>
+  </div>
+
   <!-- ========== HOW IT WORKS ========== -->
   <section class="how-it-works" id="how-it-works" aria-label="How it works">
     <div class="container">
@@ -410,6 +466,70 @@
           </div>
         </div>
         <p class="download-note">v1.0 · Android 8.0+ · Free forever</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials" id="testimonials" aria-label="Testimonials">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-tag">Testimonials</span>
+        <h2 class="section-title">Loved by <span class="gradient-text">users worldwide.</span></h2>
+        <p class="section-subtitle">See what people are saying about Cloud Guard.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card" data-animate="fade-up" data-delay="0">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Finally a cloud app that takes encryption seriously. The auto-backup is seamless, and I love knowing my files are truly private."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar avatar-1">A</div>
+            <div class="testimonial-author-info">
+              <span class="testimonial-name">Alex Chen</span>
+              <span class="testimonial-role">Software Developer</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-animate="fade-up" data-delay="100">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"Unlimited free storage that actually works? I was skeptical at first, but Cloud Guard has been rock solid. Zero issues in months."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar avatar-2">P</div>
+            <div class="testimonial-author-info">
+              <span class="testimonial-name">Priya Sharma</span>
+              <span class="testimonial-role">Digital Marketer</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card" data-animate="fade-up" data-delay="200">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="testimonial-text">"The upload speed blew me away. I backed up 10 GB of photos in minutes. Best cloud storage app I've used — and it costs nothing."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar avatar-3">M</div>
+            <div class="testimonial-author-info">
+              <span class="testimonial-name">Marcus Williams</span>
+              <span class="testimonial-role">Photographer</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
