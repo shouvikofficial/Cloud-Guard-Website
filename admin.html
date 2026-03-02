@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cloud Guard — Admin Panel</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- ========== LOGIN SCREEN ========== -->
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="assets/logo.png" alt="Cloud Guard" />
+        <h1>Cloud Guard</h1>
+        <p>Admin Panel</p>
+      </div>
+      <form id="loginForm" autocomplete="off">
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="admin@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" required />
+        </div>
+        <button type="submit" class="btn-primary btn-full" id="loginBtn">
+          <span>Sign In</span>
+          <div class="btn-spinner" style="display:none;"></div>
+        </button>
+        <p class="login-error" id="loginError"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== ADMIN DASHBOARD ========== -->
+  <div class="admin-layout" id="adminLayout" style="display:none;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <img src="assets/logo.png" alt="Cloud Guard" class="sidebar-logo" />
+        <span>Admin</span>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" data-section="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Dashboard
+        </a>
+        <a href="#hero" class="nav-item" data-section="hero">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Hero Section
+        </a>
+        <a href="#features" class="nav-item" data-section="features">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+          Features
+        </a>
+        <a href="#steps" class="nav-item" data-section="steps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          How It Works
+        </a>
+        <a href="#security" class="nav-item" data-section="security">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Security
+        </a>
+        <a href="#download" class="nav-item" data-section="download">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download / APK
+        </a>
+        <a href="#testimonials" class="nav-item" data-section="testimonials">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Testimonials
+        </a>
+        <a href="#developer" class="nav-item" data-section="developer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Developer
+        </a>
+        <a href="#site-settings" class="nav-item" data-section="site-settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <button class="btn-logout" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Mobile header -->
+    <div class="mobile-header" id="mobileHeader">
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span><span></span><span></span>
+      </button>
+      <span class="mobile-title">Admin Panel</span>
+      <button class="btn-logout-mobile" id="logoutBtnMobile" title="Sign Out">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main Content -->
+    <main class="admin-main" id="adminMain">
+
+      <!-- ===== DASHBOARD ===== -->
+      <section class="admin-section" id="sec-dashboard">
+        <div class="section-topbar">
+          <h2>Dashboard</h2>
+          <a href="index.html" target="_blank" class="btn-outline">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            View Website
+          </a>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(99,102,241,0.1); color: #818cf8;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statSections">0</span>
+              <span class="stat-label">Sections Managed</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(34,197,94,0.1); color: #22c55e;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statTestimonials">0</span>
+              <span class="stat-label">Testimonials</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(236,72,153,0.1); color: #ec4899;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statFeatures">0</span>
+              <span class="stat-label">Features</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon" style="background: rgba(245,158,11,0.1); color: #f59e0b;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </div>
+            <div class="stat-info">
+              <span class="stat-number" id="statDownloadVer">—</span>
+              <span class="stat-label">App Version</span>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-top:24px;">
+          <h3>Quick Start Guide</h3>
+          <ol class="setup-list">
+            <li>Run <code>setup.sql</code> in your Supabase SQL Editor to create tables &amp; storage.</li>
+            <li>Create an admin user in <strong>Supabase → Auth → Users → Add User</strong> (email + password).</li>
+            <li>Sign in above with those credentials.</li>
+            <li>Edit each section and click <strong>Save</strong>. Changes will appear on your live website instantly.</li>
+            <li>Upload your APK in the <strong>Download / APK</strong> section to host it via Supabase Storage.</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===== HERO ===== -->
+      <section class="admin-section" id="sec-hero" style="display:none;">
+        <div class="section-topbar">
+          <h2>Hero Section</h2>
+          <button class="btn-primary" onclick="saveSection('hero')">Save Changes</button>
+        </div>
+        <div class="card">
+          <div class="form-group">
+            <label for="heroBadge">Badge Text</label>
+            <input type="text" id="heroBadge" placeholder="Free & Unlimited Storage" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="heroLine1">Title Line 1</label>
+              <input type="text" id="heroLine1" placeholder="Your files." />
+            </div>
+            <div class="form-group">
+              <label for="heroLine2">Title Line 2</label>
+              <input type="text" id="heroLine2" placeholder="Your control." />
+            </div>
+            <div class="form-group">
+              <label for="heroLine3">Title Line 3 (gradient)</label>
+              <input type="text" id="heroLine3" placeholder="Cloud Guard." />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="heroSubtitle">Subtitle</label>
+            <textarea id="heroSubtitle" rows="3" placeholder="A blazing-fast cloud storage app..."></textarea>
+          </div>
+          <h4 style="margin:24px 0 12px;">Stats</h4>
+          <div id="heroStatsContainer"></div>
+        </div>
+      </section>
+
+      <!-- ===== FEATURES ===== -->
+      <section class="admin-section" id="sec-features" style="display:none;">
+        <div class="section-topbar">
+          <h2>Features</h2>
+          <div class="topbar-actions">
+            <button class="btn-outline" onclick="addFeature()">+ Add Feature</button>
+            <button class="btn-primary" onclick="saveSection('features')">Save Changes</button>
+          </div>
+        </div>
+        <div id="featuresContainer"></div>
+      </section>
+
+      <!-- ===== HOW IT WORKS ===== -->
+      <section class="admin-section" id="sec-steps" style="display:none;">
+        <div class="section-topbar">
+          <h2>How It Works</h2>
+          <div class="topbar-actions">
+            <button class="btn-outline" onclick="addStep()">+ Add Step</button>
+            <button class="btn-primary" onclick="saveSection('steps')">Save Changes</button>
+          </div>
+        </div>
+        <div id="stepsContainer"></div>
+      </section>
+
+      <!-- ===== SECURITY ===== -->
+      <section class="admin-section" id="sec-security" style="display:none;">
+        <div class="section-topbar">
+          <h2>Security</h2>
+          <button class="btn-primary" onclick="saveSection('security')">Save Changes</button>
+        </div>
+        <div class="card">
+          <div class="form-group">
+            <label for="securityDesc">Security Description</label>
+            <textarea id="securityDesc" rows="4" placeholder="Cloud Guard uses AES-256-GCM..."></textarea>
+          </div>
+          <h4 style="margin:24px 0 12px;">Security Checklist Items</h4>
+          <div id="securityItemsContainer"></div>
+          <button class="btn-outline btn-sm" onclick="addSecurityItem()" style="margin-top:12px;">+ Add Item</button>
+        </div>
+      </section>
+
+      <!-- ===== DOWNLOAD / APK ===== -->
+      <section class="admin-section" id="sec-download" style="display:none;">
+        <div class="section-topbar">
+          <h2>Download / APK</h2>
+          <button class="btn-primary" onclick="saveSection('download')">Save Changes</button>
+        </div>
+        <div class="card">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="dlVersion">App Version</label>
+              <input type="text" id="dlVersion" placeholder="1.0" />
+            </div>
+            <div class="form-group">
+              <label for="dlMinAndroid">Min Android Version</label>
+              <input type="text" id="dlMinAndroid" placeholder="8.0+" />
+            </div>
+            <div class="form-group">
+              <label for="dlFilename">Download Filename</label>
+              <input type="text" id="dlFilename" placeholder="Cloud-Guard.apk" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dlNote">Download Note</label>
+            <input type="text" id="dlNote" placeholder="Free forever" />
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="dlIosAvailable" />
+              iOS Available
+            </label>
+          </div>
+
+          <h4 style="margin:24px 0 12px;">APK File Upload</h4>
+          <div class="upload-zone" id="apkUploadZone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p>Drag &amp; drop your APK here, or <span class="upload-browse">browse</span></p>
+            <span class="upload-hint">Maximum file size: 200 MB</span>
+            <input type="file" id="apkFileInput" accept=".apk" style="display:none;" />
+          </div>
+          <div class="upload-progress-bar" id="apkProgressBar" style="display:none;">
+            <div class="upload-progress-fill" id="apkProgressFill"></div>
+            <span class="upload-progress-text" id="apkProgressText">0%</span>
+          </div>
+          <div class="current-file" id="apkCurrentFile" style="display:none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            <span id="apkCurrentName">No file uploaded</span>
+            <a id="apkCurrentUrl" href="#" target="_blank" class="btn-outline btn-sm">View</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TESTIMONIALS ===== -->
+      <section class="admin-section" id="sec-testimonials" style="display:none;">
+        <div class="section-topbar">
+          <h2>Testimonials</h2>
+          <div class="topbar-actions">
+            <button class="btn-outline" onclick="addTestimonial()">+ Add Testimonial</button>
+            <button class="btn-primary" onclick="saveSection('testimonials')">Save Changes</button>
+          </div>
+        </div>
+        <div id="testimonialsContainer"></div>
+      </section>
+
+      <!-- ===== DEVELOPER ===== -->
+      <section class="admin-section" id="sec-developer" style="display:none;">
+        <div class="section-topbar">
+          <h2>Developer</h2>
+          <button class="btn-primary" onclick="saveSection('developer')">Save Changes</button>
+        </div>
+        <div class="card">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="devName">Name</label>
+              <input type="text" id="devName" placeholder="Shouvik Dhali" />
+            </div>
+            <div class="form-group">
+              <label for="devTitle">Title</label>
+              <input type="text" id="devTitle" placeholder="Computer Science Engineer" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="devDesc">Description</label>
+            <textarea id="devDesc" rows="3" placeholder="Passionate about building..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="devTags">Tech Tags (comma separated)</label>
+            <input type="text" id="devTags" placeholder="Flutter, Python, FastAPI, Supabase" />
+          </div>
+          <h4 style="margin:24px 0 12px;">Social Links</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="devGithub">GitHub URL</label>
+              <input type="url" id="devGithub" placeholder="https://github.com/..." />
+            </div>
+            <div class="form-group">
+              <label for="devLinkedin">LinkedIn URL</label>
+              <input type="url" id="devLinkedin" placeholder="https://linkedin.com/in/..." />
+            </div>
+            <div class="form-group">
+              <label for="devPortfolio">Portfolio URL</label>
+              <input type="url" id="devPortfolio" placeholder="https://..." />
+            </div>
+          </div>
+          <h4 style="margin:24px 0 12px;">Developer Photo</h4>
+          <div class="upload-zone" id="photoUploadZone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Drag &amp; drop photo, or <span class="upload-browse">browse</span></p>
+            <span class="upload-hint">Recommended: 400×400 JPG/PNG</span>
+            <input type="file" id="photoFileInput" accept="image/*" style="display:none;" />
+          </div>
+          <div class="current-file" id="photoCurrentFile" style="display:none;">
+            <img id="photoPreview" alt="Preview" style="width:48px;height:48px;border-radius:50%;object-fit:cover;" />
+            <span id="photoCurrentName">photo.jpg</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SETTINGS ===== -->
+      <section class="admin-section" id="sec-site-settings" style="display:none;">
+        <div class="section-topbar">
+          <h2>Site Settings</h2>
+          <button class="btn-primary" onclick="saveSection('settings')">Save Changes</button>
+        </div>
+        <div class="card">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="setSiteName">Site Name</label>
+              <input type="text" id="setSiteName" placeholder="Cloud Guard" />
+            </div>
+            <div class="form-group">
+              <label for="setCopyright">Copyright Year</label>
+              <input type="text" id="setCopyright" placeholder="2026" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="setTagline">Tagline</label>
+            <input type="text" id="setTagline" placeholder="Unlimited encrypted cloud storage..." />
+          </div>
+          <div class="form-group">
+            <label for="setMetaDesc">Meta Description (SEO)</label>
+            <textarea id="setMetaDesc" rows="3" placeholder="Cloud Guard is a high-performance..."></textarea>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Supabase JS v2 -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
