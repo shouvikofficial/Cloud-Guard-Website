@@ -9,4 +9,5 @@ const SUPABASE_URL = '__SUPABASE_URL__';
 const SUPABASE_ANON_KEY = '__SUPABASE_ANON_KEY__';
 
 // Initialize Supabase client (supabase-js v2 loaded via CDN)
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const _sb = window.supabase;
+const supabase = (_sb.createClient || _sb.default?.createClient || _sb)(SUPABASE_URL, SUPABASE_ANON_KEY);

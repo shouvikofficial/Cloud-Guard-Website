@@ -21,7 +21,8 @@ const SUPABASE_URL = '${SUPABASE_URL}';
 const SUPABASE_ANON_KEY = '${SUPABASE_ANON_KEY}';
 
 // Initialize Supabase client (supabase-js v2 loaded via CDN)
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const _sb = window.supabase;
+const supabase = (_sb.createClient || _sb.default?.createClient || _sb)(SUPABASE_URL, SUPABASE_ANON_KEY);
 `;
 
 const outPath = path.join(__dirname, 'js', 'supabase-config.js');
