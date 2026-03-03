@@ -707,18 +707,101 @@ code {
   color: var(--text-muted);
 }
 
-/* ---------- SETUP LIST ---------- */
-.setup-list {
-  list-style: decimal;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: column;
+/* ---------- QUICK ACTIONS GRID ---------- */
+.quick-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  margin-top: 16px;
 }
 
-.setup-list strong { color: var(--text-primary); }
+.quick-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.25s var(--ease);
+  cursor: pointer;
+}
+
+.quick-action-btn svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent-light);
+  transition: transform 0.25s var(--ease);
+}
+
+.quick-action-btn:hover {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+  color: var(--text-primary);
+  transform: translateY(-2px);
+}
+
+.quick-action-btn:hover svg {
+  transform: scale(1.1);
+}
+
+[data-theme="light"] .quick-action-btn {
+  background: #f9fafb;
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .quick-action-btn:hover {
+  background: rgba(99,102,241,0.06);
+  border-color: rgba(99,102,241,0.18);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.08);
+}
+
+/* ---------- DASHBOARD INFO ROW ---------- */
+.dashboard-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.dashboard-info-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px !important;
+  margin-bottom: 0 !important;
+}
+
+.info-card-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.info-card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.dashboard-info-card h4 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.info-card-text {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
 
 /* ---------- UPLOAD ZONE ---------- */
 .upload-zone {
@@ -939,6 +1022,25 @@ code {
 /* Small phones */
 @media (max-width: 500px) {
   .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .quick-action-btn {
+    padding: 16px 10px;
+    font-size: 0.78rem;
+  }
+
+  .quick-action-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dashboard-row {
     grid-template-columns: 1fr;
   }
 

@@ -168,6 +168,22 @@ function updateDashboardStats() {
   document.getElementById('statFeatures').textContent = features.length;
   const dl = store.download || {};
   document.getElementById('statDownloadVer').textContent = dl.version || '—';
+
+  // Last synced time
+  const now = new Date();
+  document.getElementById('lastSyncTime').textContent = now.toLocaleString('en-US', {
+    month: 'short', day: 'numeric', year: 'numeric',
+    hour: '2-digit', minute: '2-digit'
+  });
+
+  // APK size
+  const apkSize = dl.apk_size;
+  if (apkSize) {
+    const mb = (apkSize / (1024 * 1024)).toFixed(1);
+    document.getElementById('statApkSize').textContent = mb + ' MB';
+  } else {
+    document.getElementById('statApkSize').textContent = dl.apk_filename ? 'Uploaded' : 'No APK';
+  }
 }
 
 // ─── Populate: Hero ─────────────────────────────────
