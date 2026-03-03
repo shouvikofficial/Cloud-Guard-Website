@@ -3,6 +3,29 @@
    Auth · Routing · CRUD · File Upload · Toasts
    =================================================== */
 
+// ─── Theme ───────────────────────────────────────────
+(function initTheme() {
+  const saved = localStorage.getItem('cg-theme');
+  if (saved === 'light') document.documentElement.setAttribute('data-theme', 'light');
+  else document.documentElement.removeAttribute('data-theme');
+})();
+
+function toggleTheme() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  if (isLight) {
+    document.documentElement.removeAttribute('data-theme');
+    localStorage.setItem('cg-theme', 'dark');
+  } else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('cg-theme', 'light');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+  document.getElementById('themeToggleMobile')?.addEventListener('click', toggleTheme);
+});
+
 // ─── Cached content store ────────────────────────────
 const store = {};
 const ICONS = ['lock', 'cloud', 'bolt', 'globe', 'shield', 'desktop', 'server', 'key', 'zap', 'database', 'folder', 'file', 'cpu', 'wifi', 'refresh', 'star', 'heart', 'check'];
