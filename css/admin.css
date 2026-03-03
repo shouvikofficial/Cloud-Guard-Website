@@ -173,8 +173,26 @@ code {
   background: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.35s;
   outline: none;
+}
+
+[data-theme="light"] .form-group input[type="text"],
+[data-theme="light"] .form-group input[type="email"],
+[data-theme="light"] .form-group input[type="password"],
+[data-theme="light"] .form-group input[type="url"],
+[data-theme="light"] .form-group input[type="number"],
+[data-theme="light"] .form-group textarea,
+[data-theme="light"] .form-group select {
+  border-color: rgba(0, 0, 0, 0.15);
+  background: #f9fafb;
+}
+
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus,
+[data-theme="light"] .form-group select:focus {
+  background: #fff;
+  border-color: var(--accent);
 }
 
 .form-group input:focus,
@@ -524,10 +542,6 @@ code {
   z-index: 99;
 }
 
-[data-theme="light"] .sidebar-overlay {
-  background: rgba(0,0,0,0.3);
-}
-
 /* Mobile right group */
 .mobile-right {
   display: flex;
@@ -623,11 +637,29 @@ code {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .item-row input {
   flex: 1;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.35s;
+  outline: none;
+}
+
+.item-row input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+[data-theme="light"] .item-row input {
+  border-color: rgba(0, 0, 0, 0.15);
 }
 
 /* ---------- STATS GRID ---------- */
@@ -1050,6 +1082,39 @@ code {
 [data-theme="light"] code {
   background: rgba(99,102,241,0.08);
   color: var(--accent);
+}
+
+[data-theme="light"] .upload-zone {
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+[data-theme="light"] .upload-zone:hover,
+[data-theme="light"] .upload-zone.dragover {
+  border-color: var(--accent);
+  background: rgba(99,102,241,0.03);
+}
+
+[data-theme="light"] .btn-danger {
+  background: rgba(239,68,68,0.06);
+  border-color: rgba(239,68,68,0.15);
+}
+
+[data-theme="light"] .btn-danger:hover {
+  background: rgba(239,68,68,0.12);
+  border-color: rgba(239,68,68,0.3);
+}
+
+[data-theme="light"] .current-file {
+  background: #f4f4f5;
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .btn-logout:hover {
+  background: rgba(239,68,68,0.04);
+}
+
+[data-theme="light"] .sidebar-overlay {
+  background: rgba(0,0,0,0.2);
 }
 
 /* Body theme transition */
