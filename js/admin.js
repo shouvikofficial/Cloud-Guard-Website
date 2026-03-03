@@ -66,7 +66,7 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   } catch (err) {
     label.style.display = '';
     spinner.style.display = 'none';
-    errorEl.textContent = 'Connection failed. Check Supabase configuration.';
+    errorEl.textContent = err.message || 'Connection failed. Check Supabase configuration.';
     console.error('Login error:', err);
   }
 });
