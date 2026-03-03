@@ -50,6 +50,11 @@
       if (map.testimonials)  patchTestimonials(map.testimonials);
       if (map.developer)     patchDeveloper(map.developer);
       if (map.settings)      patchSettings(map.settings);
+
+      // Re-init scroll animations for dynamically injected [data-animate] elements
+      if (typeof window.reinitAnimations === 'function') {
+        window.reinitAnimations();
+      }
     } catch {
       // Supabase unreachable — silently keep the static HTML
     }

@@ -107,7 +107,7 @@ function initNavbar() {
 
 /* ---------- SCROLL ANIMATIONS ---------- */
 function initScrollAnimations() {
-  const elements = document.querySelectorAll('[data-animate]');
+  const elements = document.querySelectorAll('[data-animate]:not(.visible)');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -126,6 +126,9 @@ function initScrollAnimations() {
 
   elements.forEach(el => observer.observe(el));
 }
+
+// Expose globally so content-loader can re-trigger after patching DOM
+window.reinitAnimations = initScrollAnimations;
 
 /* ---------- ANIMATED COUNTERS ---------- */
 function initCounters() {
